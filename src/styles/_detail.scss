@@ -1,0 +1,36 @@
+.detail {
+	max-width: 650px;
+	margin: 0 auto;
+	padding: 20px 15px;
+	h1 {
+		text-align: center;
+		color: rgb(55, 55, 165);
+		margin-top: 20px;
+		font-weight: 600;
+	}
+	.listing-detail {
+		margin-top: 20px;
+		h2 {
+			font-weight: 500;
+		}
+		p {
+			margin: 10px 0;
+		}
+		h6 {
+			color: rgb(196, 35, 35);
+			font-size: bold;
+			font-size: 18px;
+		}
+	}
+	.comments {
+		.comment {
+			padding: 10px;
+			p {
+				font-size: 13px;
+			}
+			background-color: rgb(199, 199, 199);
+			border-radius: 4px;
+			margin: 10px 0;
+		}
+	}
+}
