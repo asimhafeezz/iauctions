@@ -25,7 +25,7 @@ const ListingCard = ({
 export const Listings = () => {
 	//pagination
 	const [page, setPage] = useState<any>(0)
-	const [rowsPerPage, setRowsPerPage] = useState<any>(9)
+	const [rowsPerPage] = useState<any>(9)
 
 	const { push } = useHistory()
 
