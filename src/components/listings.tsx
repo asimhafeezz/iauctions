@@ -1,27 +1,45 @@
 //react router dom
+import { useState } from "react"
 import { useHistory } from "react-router-dom"
+
+interface ListingCardI {
+	pushToDetailRoute: () => void
+	item: {
+		title: string
+		description: string
+	}
+}
 
 //lstings card jsx
 const ListingCard = ({
 	pushToDetailRoute,
-}: {
-	pushToDetailRoute: () => void
-}): JSX.Element => (
+	item,
+}: ListingCardI): JSX.Element => (
 	<section className='listing-card' onClick={pushToDetailRoute}>
-		<h3>Title</h3>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, accusamus!
-		</p>
+		<h3>{item.title}</h3>
+		<p>{item.description}</p>
 		<h6>Price: {`1500$`}</h6>
 	</section>
 )
 
 export const Listings = () => {
+	//pagination
+	const [page, setPage] = useState<any>(0)
+	const [rowsPerPage, setRowsPerPage] = useState<any>(9)
+
 	const { push } = useHistory()
 
 	const pushToDetailRoute = () => {
 		push(`/detail/${123}`)
 	}
+
+	const nextPage = () => {
+		setPage((page: number) => page + 1)
+	}
+	const prevPage = () => {
+		setPage((page: number) => page - 1)
+	}
+
 	return (
 		<div className='listings'>
 			<section className='nav'>
@@ -37,17 +55,102 @@ export const Listings = () => {
 				</section>
 			</section>
 			<section className='listings-grid'>
-				{Array(16)
-					.fill(10)
-					.map(_ => (
-						<ListingCard pushToDetailRoute={pushToDetailRoute} />
+				{dummyData
+					.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+					.map(item => (
+						<ListingCard item={item} pushToDetailRoute={pushToDetailRoute} />
 					))}
 			</section>
 			<section className='pagination'>
-				<button>Prev</button>
-				<p>Count</p>
-				<button>Next</button>
+				<button onClick={prevPage} disabled={page <= 0}>
+					Prev
+				</button>
+				<p>Page: {page + 1}</p>
+				<button
+					onClick={nextPage}
+					disabled={page >= dummyData.length / rowsPerPage - 1}>
+					Next
+				</button>
 			</section>
 		</div>
 	)
 }
+
+const dummyData = [
+	{
+		title: "Title",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Titleqwe",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Titleqwe",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title54",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title6",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title4",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title54",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title6",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title4",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+	{
+		title: "Title2",
+		description: "THis si the description for that things....",
+	},
+]
