@@ -24,13 +24,29 @@ export const Listings = () => {
 	}
 	return (
 		<div className='listings'>
-			<h1>Listings</h1>
+			<section className='nav'>
+				<h1>Listings</h1>
+				<section className='right-side'>
+					<select>
+						<option value=''>Category</option>
+						<option>First option</option>
+						<option>First option</option>
+						<option>First option</option>
+					</select>
+					<button>Add New Bid</button>
+				</section>
+			</section>
 			<section className='listings-grid'>
 				{Array(16)
 					.fill(10)
 					.map(_ => (
 						<ListingCard pushToDetailRoute={pushToDetailRoute} />
 					))}
+			</section>
+			<section className='pagination'>
+				<button>Prev</button>
+				<p>Count</p>
+				<button>Next</button>
 			</section>
 		</div>
 	)
