@@ -51,7 +51,7 @@ export const Listings = () => {
 						<option>First option</option>
 						<option>First option</option>
 					</select>
-					<button>Add New Bid</button>
+					<button onClick={() => push("/addbid")}>Add New Bid</button>
 				</section>
 			</section>
 			<section className='listings-grid'>

@@ -6,7 +6,7 @@ import {
 	Switch,
 	Redirect,
 } from "react-router-dom"
-import { Detail, Listings, Login, Signup } from "./components"
+import { AddBid, Detail, Listings, Login, Signup } from "./components"
 
 const App: React.FC = () => {
 	return (
@@ -17,6 +17,7 @@ const App: React.FC = () => {
 				<Route exact path='/signup' component={Signup} />
 				<Route exact path='/listings' component={Listings} />
 				<Route exact path='/detail/:id' component={Detail} />
+				<Route exact path='/addbid' component={AddBid} />
 			</Switch>
 		</Router>
 	)
